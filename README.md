@@ -15,6 +15,18 @@ First of all build the image
 make build
 ```
 
+## Pushing the app to docker hub
+
+First login to the docker account
+```sh
+docker login
+```
+
+Then publish an image
+```sh
+make publish
+```
+
 ## Deploying the app locally
 
 Ensure you are setup to use minikube
