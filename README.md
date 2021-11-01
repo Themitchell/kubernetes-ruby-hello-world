@@ -1,15 +1,29 @@
 # Equal Experts Code Test
 
+## Dependencies
+
+You will need the following dependencies installed on your machine:
+- minkube
+- kubectl
+- helm
+
 ## Setup
+
+First of all build the image
 
 ```sh
 make build
 ```
 
-## Running the app
+## Deploying the app locally
 
+Ensure you are setup to use minikube
 ```sh
-make start
+minikube start
+kubectl config use-context minikube
 ```
 
-You can now navigate to the homepage at http://localhost:9292
+Deploy the application using helm
+```sh
+make deploy
+```
