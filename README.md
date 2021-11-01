@@ -3,12 +3,13 @@
 ## Setup
 
 ```sh
-bundle install
+make build
 ```
 
 ## Running the app
 
 ```sh
-bundle exec puma
+make start
 ```
 
+You can now navigate to the homepage at http://localhost:9292
