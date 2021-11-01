@@ -7,7 +7,7 @@ You will need the following dependencies installed on your machine:
 - kubectl
 - helm
 
-## Setup
+## Building the image
 
 First of all build the image
 
@@ -29,13 +29,33 @@ make publish
 
 ## Deploying the app locally
 
-Ensure you are setup to use minikube
+### Setting up minikube
+Start minikube
 ```sh
 minikube start
+```
+
+Set kubectl to use minikube
+```sh
 kubectl config use-context minikube
 ```
+
+Ensure that minkube ingress is enabled
+```sh
+minikube addons enable ingress
+```
+
+### Deploy the app to minikube
 
 Deploy the application using helm
 ```sh
 make deploy
 ```
+
+### Viewing the app in kubernetes
+Create a tunnel to minikube
+```sh
+minikube tunnel
+```
+
+Navigate to the app at [http://127.0.0.1](http://127.0.0.1)
