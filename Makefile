@@ -14,4 +14,4 @@ deploy:
 	helm upgrade --install ${APP_NAME}-ingress-nginx ingress-nginx/ingress-nginx
 	helm upgrade --install ${APP_NAME} ${APP_NAME}
 
-.PHONY: build start
+.PHONY: build push deploy

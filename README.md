@@ -7,13 +7,20 @@ You will need the following dependencies installed on your machine:
 - kubectl
 - helm
 
+On a mac with homebrew run
+```sh
+brew install minikube kubectl helm
+```
+
 ## Building the image
 
-First of all build the image
+First of all build the image.
 
 ```sh
 make build
 ```
+
+Note: You will not need to build the image to run the app initially. The image is already up on dockerhub.
 
 ## Pushing the app to docker hub
 
