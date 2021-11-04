@@ -47,11 +47,6 @@ Set kubectl to use minikube
 kubectl config use-context minikube
 ```
 
-Ensure that minkube ingress is enabled
-```sh
-minikube addons enable ingress
-```
-
 ### Deploy the app to minikube
 
 Deploy the application using helm
