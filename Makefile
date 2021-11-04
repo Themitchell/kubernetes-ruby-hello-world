@@ -12,6 +12,10 @@ deploy:
 	helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 	helm repo update
 	helm upgrade --install ${APP_NAME}-ingress-nginx ingress-nginx/ingress-nginx
+	kubectl wait \
+  --for=condition=ready pod \
+  --selector=app.kubernetes.io/component=controller \
+  --timeout=90s
 	helm upgrade --install ${APP_NAME} ${APP_NAME}
 
 .PHONY: build push deploy
