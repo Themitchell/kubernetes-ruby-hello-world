@@ -14,4 +14,4 @@ spec:
             service:
               name: {{ .Release.Name }}-hello-world
               port:
-                number: 9292
+                number: 80
