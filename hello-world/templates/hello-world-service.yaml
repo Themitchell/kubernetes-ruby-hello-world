@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}-hello-world
 spec:
+  type: LoadBalancer
   selector:
     app: hello-world
   ports:
