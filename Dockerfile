@@ -18,7 +18,7 @@ RUN groupadd -g $UID -o $USER && \
 USER $USER
 WORKDIR $APPDIR
 
-COPY --chown=$USER Gemfile Gemfile.lock $APP_DIR
+COPY --chown=$USER Gemfile Gemfile.lock $APP_DIR/
 RUN bundle install
 COPY --chown=$USER . $APPDIR
 
