@@ -1,4 +1,4 @@
-# Equal Experts Code Test
+# Kubernetes Ruby Hello World
 
 ## Dependencies
 
