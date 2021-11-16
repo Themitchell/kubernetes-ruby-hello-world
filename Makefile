@@ -18,7 +18,7 @@ run:
 	docker run -it --rm -p 9292:9292 --name ${APP_NAME} ${IMAGE_NAME}
 
 test:
-	docker run -it --rm --name ${APP_NAME}-test ${IMAGE_NAME} bundle exec rspec
+	docker run --rm --name ${APP_NAME}-test ${IMAGE_NAME} bundle exec rspec
 
 push: build
 	docker push ${IMAGE_NAME}
