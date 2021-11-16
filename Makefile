@@ -1,6 +1,7 @@
 APP_NAME=hello-world
 IMAGE_NAME=themitchell/${APP_NAME}
 UID=$(shell id -u)
+PWD=$(shell pwd)
 
 build:
 	docker build -t ${IMAGE_NAME} .
@@ -8,8 +9,16 @@ build:
 destroy:
 	docker rm ${APP_NAME}
 
+bundle:
+	docker run -it --rm \
+		-v "${PWD}/Gemfile.lock:/home/app/${APP_NAME}/Gemfile.lock" \
+		--name ${APP_NAME} ${IMAGE_NAME} bundle install
+
 run:
-	docker run -it -p 9292:9292 --name ${APP_NAME} ${IMAGE_NAME}
+	docker run -it --rm -p 9292:9292 --name ${APP_NAME} ${IMAGE_NAME}
+
+test:
+	docker run -it --rm --name ${APP_NAME}-test ${IMAGE_NAME} bundle exec rspec
 
 push: build
 	docker push ${IMAGE_NAME}
