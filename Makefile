@@ -5,8 +5,20 @@ UID=$(shell id -u)
 build:
 	docker build -t ${IMAGE_NAME} .
 
-push:
+destroy:
+	docker rm ${APP_NAME}
+
+run:
+	docker run -it -p 9292:9292 --name ${APP_NAME} ${IMAGE_NAME}
+
+push: build
 	docker push ${IMAGE_NAME}
+
+minikube-start:
+	minikube start
+
+clean:
+	minikube delete --purge --all
 
 deploy:
 	helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
@@ -17,5 +29,8 @@ deploy:
   --selector=app.kubernetes.io/component=controller \
   --timeout=90s
 	helm upgrade --install ${APP_NAME} ${APP_NAME}
+
+fresh-deploy: clean minikube-start deploy
+	minikube tunnel
 
 .PHONY: build push deploy
